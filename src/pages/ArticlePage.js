@@ -1,13 +1,14 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 import articleContent from './article-content'
+import NotFoundPage from './NotFoundPage'
 import ArticlesList from '../components/ArticlesList'
 
 const ArticlePage = () => {
   const {name} = useParams()
   const article = articleContent.find(art => art.name === name)
 
-  if (!article) return <h1>Article does not exist!</h1>
+  if (!article) return <NotFoundPage />
 
   const otherArticles = articleContent.filter(art => art.name !== name)
   return (
@@ -20,6 +21,6 @@ const ArticlePage = () => {
       <ArticlesList articles={otherArticles} />
     </>
   )
-} 
+}
 
 export default ArticlePage
